@@ -1,3 +1,9 @@
+  <!-- TODO:
+  - Below the main rectangle, a section that will be "call to action", and will be h2 or h3 large.
+  - Graphics.
+  
+  -->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,6 +32,7 @@
           margin: 0;
           padding: 0;
           color-scheme: light;
+          scroll-behavior: smooth;
         }
 
         header.container, main.container, footer.container { max-width: 1080px; }
@@ -99,6 +106,134 @@
         main.container section:not(.hero) {
           margin-top: 4rem;
         }
+
+        section h2 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          color: var(--exallon-ink);
+        }
+
+        section p {
+          color: var(--exallon-ink-soft);
+        }
+
+        #capabilities .specializations {
+          list-style: none;
+          padding: 0;
+          margin: 2rem 0 0;
+          display: grid;
+          gap: 1.5rem;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        #capabilities .specializations li {
+          background: var(--exallon-surface);
+          border: 1px solid rgba(17,19,24,0.05);
+          border-radius: 1rem;
+          padding: 1.5rem;
+          box-shadow: 0 20px 40px rgba(115,56,168,0.08);
+        }
+
+        #capabilities .specializations h3 {
+          margin-top: 0;
+          margin-bottom: 0.6rem;
+          color: var(--exallon-accent);
+          font-size: 1.2rem;
+        }
+
+        #approach.grid {
+          display: grid;
+          gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          align-items: stretch;
+        }
+
+        #approach article {
+          background: var(--exallon-surface);
+          border: 1px solid rgba(17,19,24,0.05);
+          border-radius: 1rem;
+          padding: 1.5rem 1.75rem;
+          box-shadow: 0 18px 35px rgba(17,19,24,0.08);
+          color: var(--exallon-ink);
+        }
+
+        #approach .highlight {
+          background: rgba(115,56,168,0.08);
+          border: 1px solid rgba(115,56,168,0.2);
+          color: var(--exallon-ink);
+        }
+
+        #approach .highlight ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: grid;
+          gap: 0.8rem;
+        }
+
+        #approach .highlight strong {
+          color: var(--exallon-accent);
+        }
+
+        .callout {
+          background: var(--exallon-surface);
+          border-radius: 1.25rem;
+          padding: 2.5rem;
+          box-shadow: 0 30px 60px rgba(17,19,24,0.08);
+          border: 1px solid rgba(17,19,24,0.05);
+          text-align: center;
+        }
+
+        .team-grid {
+          display: grid;
+          gap: 1.5rem;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          margin-top: 2rem;
+        }
+
+        .team-grid article {
+          background: var(--exallon-surface);
+          border-radius: 1rem;
+          padding: 1.75rem;
+          border: 1px solid rgba(17,19,24,0.05);
+          box-shadow: 0 18px 35px rgba(115,56,168,0.08);
+        }
+
+        .team-grid .title {
+          color: var(--exallon-accent);
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .cta {
+          margin-top: 4rem;
+          background: var(--exallon-hero);
+          color: #fff;
+          padding: 2.5rem;
+          border-radius: 1.25rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+          box-shadow: 0 40px 70px rgba(115,56,168,0.2);
+        }
+
+        .cta p {
+          color: rgba(255,255,255,0.85);
+          max-width: 480px;
+        }
+
+        .cta a[role="button"] {
+          margin: 0;
+        }
+
+        @media (min-width: 768px) {
+          .cta {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
     </style>
 </head>
 <body>
@@ -117,23 +252,91 @@
 <main class="container">
     <!-- HERO full-width section -->
     <section class="hero">
-        <h1>Secure. Practical. Design‑led.</h1>
-        <p class="lead">Exallon delivers secure, practical, design‑driven software experiences for teams that value precision and usability.</p>
-        <div class="chips">
-            <span class="chip">Security‑first engineering</span>
-            <span class="chip">Pragmatic delivery</span>
-            <span class="chip">Design‑driven workflow</span>
-        </div>
+        <h1>Systems which are not allowed to fail.</h1>
+        <p class="lead">We deliver solutions when security and reliability are the absolute top priorities.</p>
         <p>
             <a href="#contact" class="contrast" role="button">Start a conversation</a>
-            <a href="#capabilities" role="button" class="secondary">See capabilities</a>
+            <a href="#capabilities" role="button" class="secondary">See our capabilities</a>
         </p>
     </section>
 
     <!-- Placeholder for other sections -->
     <section>
-        <h2 id="about">We build dependable software — fast, not rushed.</h2>
-        <p>From early prototypes to first production releases, we help founders and product teams move with confidence. Our bias is toward <strong>clarity, testability, and maintainability</strong> — with a healthy respect for real‑world constraints.</p>
+        <h2 id="about">Reliability is an absolute priority.</h2>
+        <p>We come from enterprise where <strong>systems are not allowed to fail or be hacked</strong>. We share expertise from banking industry, credit card manufacturing and software services for global players in banking and healthcare, as well as fintech start-ups.</p>
+    </section>
+
+    <section>
+        <h2 id="about">Veterans in pragmatic delivery.</h2>
+        <p>We choose the <strong>perfect balance</strong> between delivery pace and operational processes for your product. We know how to creat unbreakable enterprise software, and how to scale it down for less vulnerable areas.</p>
+    </section>
+
+    <section id="capabilities">
+        <h2>Capabilities tuned for mission‑critical work</h2>
+        <ul class="specializations">
+            <li>
+                <h3>Secure Foundations</h3>
+                <p>Threat modeling, dependency hardening, and secure SDLC coaching to keep incidents out of your launch notes.</p>
+            </li>
+            <li>
+                <h3>Practical Platforms</h3>
+                <p>Composable architectures, cloud cost tuning, and automation that scales with your roadmap.</p>
+            </li>
+            <li>
+                <h3>Design Systems</h3>
+                <p>Design tokens, interaction specs, and accessible UI toolkits that keep experiences cohesive.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="approach" class="grid">
+        <article>
+            <h2>How we deliver dependable velocity</h2>
+            <p>Security, practicality, and design thinking are embedded from kickoff. We start with a risk map, define success metrics, and pair engineers with product and design leads from day one.</p>
+        </article>
+        <article class="highlight">
+            <ul>
+                <li><strong>Discovery sprints:</strong> Align on value, constraints, and measurable outcomes.</li>
+                <li><strong>Security reviews:</strong> Embedded reviews in every increment, from auth flows to data stores.</li>
+                <li><strong>Experience labs:</strong> Prototype with real users to fine-tune micro-interactions.</li>
+                <li><strong>Delivery rhythms:</strong> Predictable cadences, transparent reporting, and rapid iteration.</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="callout">
+        <h2>Built for leaders who need confidence without compromise</h2>
+        <p>Whether you’re preparing for a funding milestone or reinforcing critical infrastructure, Exallon gives you future-ready software that stands up to scrutiny. We document every decision and equip your team to run with the product post-engagement.</p>
+    </section>
+
+    <section id="team">
+        <h2>Meet the team</h2>
+        <p>Strategists, engineers, and designers united around secure, human-centered systems.</p>
+        <div class="team-grid">
+            <article>
+                <h3>Aria Chen</h3>
+                <p class="title">Security Architect</p>
+                <p>Former red team lead who now hardens infrastructure and mentors client teams on incident response.</p>
+            </article>
+            <article>
+                <h3>Milan Duarte</h3>
+                <p class="title">Principal Engineer</p>
+                <p>Builds practical platform patterns, from event-driven backbones to deployment automation.</p>
+            </article>
+            <article>
+                <h3>Rae Morgan</h3>
+                <p class="title">Design Director</p>
+                <p>Shapes product narratives and interface systems that are as intuitive as they are trustworthy.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div>
+            <h2>Let’s architect what’s next</h2>
+            <p>Tell us about your product goals, and we’ll propose a secure, practical, design-led path forward.</p>
+        </div>
+        <a href="mailto:hello@exallon.com" class="contrast" role="button">hello@exallon.com</a>
     </section>
 </main>
 
@@ -145,6 +348,20 @@
     (function() {
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const targetId = anchor.getAttribute('href');
+          if (!targetId || targetId.length <= 1) return;
+
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (history.replaceState) history.replaceState(null, '', targetId);
+        });
+      });
     })();
 </script>
 </body>
