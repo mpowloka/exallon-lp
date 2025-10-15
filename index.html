@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exallon — Secure, Practical, Design‑led Software</title>
+    <meta name="description" content="Exallon is a newly funded software house focused on security-first engineering, pragmatic delivery, and design-led product development." />
+
+    <!-- Force light theme -->
+    <meta name="color-scheme" content="light" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <style>
+        :root {
+          --exallon-accent: #7338A8;
+          --exallon-ink: #111318;
+          --exallon-ink-soft: #44495a;
+          --exallon-bg: #f8f8fb;
+          --exallon-surface: #ffffff;
+          --exallon-hero: linear-gradient(90deg, rgba(115,56,168,0.9), rgba(115,56,168,0.7));
+        }
+
+        html, body {
+          background-color: var(--exallon-bg);
+          color: var(--exallon-ink);
+          margin: 0;
+          padding: 0;
+          color-scheme: light;
+        }
+
+        header.container, main.container, footer.container { max-width: 1080px; }
+
+        nav a, nav strong { color: var(--exallon-ink) !important; }
+        nav a[role="button"] { color: #fff !important; background-color: var(--exallon-accent) !important; }
+
+        /* HERO SECTION full width */
+        .hero {
+          width: 100vw;
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
+          background: var(--exallon-hero);
+          color: #fff;
+          text-align: center;
+          padding: 6rem 1rem;
+          box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
+        }
+
+        .hero h1 {
+          font-weight: 800;
+          font-size: 2.6rem;
+          margin-bottom: 1rem;
+          color: #fff;
+        }
+        .hero p.lead {
+          color: rgba(255,255,255,0.85);
+          font-size: 1.15rem;
+          max-width: 720px;
+          margin: 0 auto 1.5rem auto;
+        }
+
+        .chips {
+          display: flex;
+          gap: 0.6rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-bottom: 1.5rem;
+        }
+        .chip {
+          background-color: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.25);
+          border-radius: 999px;
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+          color: #fff;
+          backdrop-filter: blur(2px);
+        }
+
+        .hero p a[role="button"] {
+          margin: 0.25rem;
+        }
+
+        .hero a.contrast[role="button"] {
+          background: #fff;
+          color: var(--exallon-accent);
+          font-weight: 600;
+          border: none;
+        }
+
+        .hero a.secondary[role="button"] {
+          background: transparent;
+          color: #fff;
+          border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* content spacing below hero */
+        main.container section:not(.hero) {
+          margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+<header class="container">
+    <nav>
+        <ul><li><strong>Exallon</strong></li></ul>
+        <ul>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact" role="button">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <!-- HERO full-width section -->
+    <section class="hero">
+        <h1>Secure. Practical. Design‑led.</h1>
+        <p class="lead">Exallon delivers secure, practical, design‑driven software experiences for teams that value precision and usability.</p>
+        <div class="chips">
+            <span class="chip">Security‑first engineering</span>
+            <span class="chip">Pragmatic delivery</span>
+            <span class="chip">Design‑driven workflow</span>
+        </div>
+        <p>
+            <a href="#contact" class="contrast" role="button">Start a conversation</a>
+            <a href="#capabilities" role="button" class="secondary">See capabilities</a>
+        </p>
+    </section>
+
+    <!-- Placeholder for other sections -->
+    <section>
+        <h2 id="about">We build dependable software — fast, not rushed.</h2>
+        <p>From early prototypes to first production releases, we help founders and product teams move with confidence. Our bias is toward <strong>clarity, testability, and maintainability</strong> — with a healthy respect for real‑world constraints.</p>
+    </section>
+</main>
+
+<footer class="container">
+    <small>© <span id="year"></span> Exallon. Built with security, practicality, and design in mind.</small>
+</footer>
+
+<script>
+    (function() {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+</script>
+</body>
+</html>
