@@ -1,0 +1,76 @@
+<!-- Geometric Shield Background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Geometric shield background">
+  <defs>
+    <!-- Brand gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3c005a"/>
+      <stop offset="55%" stop-color="#5a1a90"/>
+      <stop offset="100%" stop-color="#7338A8"/>
+    </linearGradient>
+
+    <!-- Edge fade -->
+    <radialGradient id="fade" cx="50%" cy="45%" r="72%">
+      <stop offset="0%" stop-color="white" stop-opacity="1"/>
+      <stop offset="85%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="fadeMask"><rect width="1600" height="520" fill="url(#fade)"/></mask>
+
+    <!-- Subtle line gradient -->
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.07"/>
+    </linearGradient>
+
+    <!-- Soft glow for the shield outline -->
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="520" fill="url(#bg)"/>
+
+  <!-- Diagonal techno lines (very subtle) -->
+  <g mask="url(#fadeMask)" stroke="url(#line)" stroke-width="1">
+    <path d="M-100 460 L380 0"/>
+    <path d="M40 520 L520 0"/>
+    <path d="M220 520 L700 0"/>
+    <path d="M420 520 L900 0"/>
+    <path d="M620 520 L1100 0"/>
+    <path d="M820 520 L1300 0"/>
+    <path d="M1020 520 L1500 0"/>
+    <path d="M1220 520 L1600 140"/>
+  </g>
+
+  <!-- Central geometric shield -->
+  <g transform="translate(800,260) scale(1.0)" filter="url(#glow)">
+    <!-- Shield outline -->
+    <path d="M0,-140
+             C 90,-120 150,-110 180,-90
+             v110
+             c0,95 -90,160 -180,185
+             c-90,-25 -180,-90 -180,-185
+             v-110
+             C -150,-110 -90,-120 0,-140 Z"
+          fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2.2"/>
+
+    <!-- Facet lines (minimal) -->
+    <g stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1">
+      <!-- Vertical spine -->
+      <path d="M0,-120 L0,170"/>
+      <!-- Upper facets -->
+      <path d="M-120,-95 L0,-40 L120,-95"/>
+      <!-- Mid facets -->
+      <path d="M-150,-20 L0,40 L150,-20"/>
+      <!-- Lower facets -->
+      <path d="M-120,70 L0,120 L120,70"/>
+      <!-- Side braces -->
+      <path d="M-180,-30 L-80,40"/>
+      <path d="M180,-30 L80,40"/>
+    </g>
+
+    <!-- Crest highlight -->
+    <ellipse cx="0" cy="-80" rx="130" ry="28" fill="#FFFFFF" opacity="0.07"/>
+  </g>
+</svg>

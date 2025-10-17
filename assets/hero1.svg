@@ -1,0 +1,62 @@
+<!-- Hexagonal Security Grid (SVG) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Futuristic hexagonal grid background">
+  <defs>
+    <!-- Base gradient (deep → bright purple) -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"  stop-color="#3c005a"/>
+      <stop offset="0.55" stop-color="#5a1a90"/>
+      <stop offset="1"  stop-color="#7338A8"/>
+    </linearGradient>
+
+    <!-- Hex grid pattern (stroke only) -->
+    <!-- Adjust 'size' to change density (w=46 h=40 works well for hero sizes) -->
+    <pattern id="hexPattern" width="46" height="40" patternUnits="userSpaceOnUse" patternTransform="translate(0,0)">
+      <!-- One flat-top hex cell outline -->
+      <!-- Hex math: r=13.333; w=2r*sqrt(3)/? but we’ll use tuned points for crisp strokes -->
+      <path d="M23 1 L45 11 L45 29 L23 39 L1 29 L1 11 Z"
+            fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"/>
+    </pattern>
+
+    <!-- Soft vignette so the grid fades outward -->
+    <radialGradient id="fade" cx="50%" cy="45%" r="70%">
+      <stop offset="0%"  stop-color="white" stop-opacity="1"/>
+      <stop offset="70%" stop-color="white" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="fadeMask">
+      <rect width="1600" height="520" fill="url(#fade)"/>
+    </mask>
+
+    <!-- Glow for highlighted hexes -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b1"/>
+      <feMerge>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="520" fill="url(#bgGrad)"/>
+
+  <!-- Grid overlay with fade mask -->
+  <rect width="1600" height="520" fill="url(#hexPattern)" mask="url(#fadeMask)"/>
+
+  <!-- A few subtle “secure nodes” (glowing hex cells) -->
+  <!-- Center-right -->
+  <g filter="url(#glow)" opacity="0.9">
+    <circle cx="1040" cy="220" r="2.5" fill="#ffffff" fill-opacity="0.9"/>
+    <circle cx="1040" cy="220" r="12" fill="#ffffff" fill-opacity="0.10"/>
+  </g>
+  <!-- Upper-left -->
+  <g filter="url(#glow)" opacity="0.8">
+    <circle cx="420" cy="140" r="2.5" fill="#ffffff" fill-opacity="0.9"/>
+    <circle cx="420" cy="140" r="10" fill="#ffffff" fill-opacity="0.08"/>
+  </g>
+  <!-- Lower-right -->
+  <g filter="url(#glow)" opacity="0.7">
+    <circle cx="1260" cy="360" r="2.5" fill="#ffffff" fill-opacity="0.85"/>
+    <circle cx="1260" cy="360" r="11" fill="#ffffff" fill-opacity="0.08"/>
+  </g>
+</svg>
