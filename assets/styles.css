@@ -226,6 +226,41 @@ main > section:first-of-type {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-scroll {
+    --hero-scroll-length: auto;
+  }
+
+  .hero-scroll .scroll-container,
+  .hero-scroll .sticky-container {
+    height: auto;
+  }
+
+  .hero-scroll .sticky-container {
+    position: relative;
+  }
+
+  .hero[data-scroll-sticky] {
+    transform: none;
+    min-height: auto;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    border-radius: 0;
+  }
+
+  .hero[data-scroll-sticky] .content {
+    transform: none;
+  }
+
+  .hero[data-scroll-sticky] .hero-bg,
+  .hero[data-scroll-sticky] .hero-bg svg {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    clip-path: none;
+    -webkit-clip-path: none;
+  }
+}
+
 .hero--compact {
   padding: 3rem 1rem;
   min-height: 100px;

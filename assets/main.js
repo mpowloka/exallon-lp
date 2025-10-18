@@ -60,11 +60,22 @@
   if (stickyHero) {
     const scrollContainer = stickyHero.closest(".scroll-container");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
+    const shouldDisableStickyHero = () =>
+      prefersReducedMotion.matches || mobileBreakpoint.matches;
 
-    if (!scrollContainer || prefersReducedMotion.matches) {
+    const disableStickyHero = () => {
       stickyHero.style.setProperty("--hero-scale", "1");
       stickyHero.style.setProperty("--hero-progress", "0");
       stickyHero.style.setProperty("--hero-offset", "0px");
+      stickyHero.style.setProperty("--hero-radius", "0px");
+      if (scrollContainer) {
+        scrollContainer.style.removeProperty("--hero-scroll-length");
+      }
+    };
+
+    if (!scrollContainer) {
+      disableStickyHero();
       return;
     }
 
@@ -96,6 +107,10 @@
     };
 
     const applyScale = () => {
+      if (shouldDisableStickyHero()) {
+        disableStickyHero();
+        return;
+      }
       if (!containerHeight) return;
       const scrollY = window.scrollY || window.pageYOffset;
       const range = Math.max(containerHeight * distanceFactor - viewportHeight, viewportHeight);
@@ -122,22 +137,51 @@
       });
     };
 
-    const handleScroll = () => requestTick();
+    const handleScroll = () => {
+      if (shouldDisableStickyHero()) {
+        disableStickyHero();
+        return;
+      }
+      requestTick();
+    };
 
     const handleResize = () => {
+      if (shouldDisableStickyHero()) {
+        disableStickyHero();
+        return;
+      }
       updateMetrics();
       requestTick();
     };
 
-    updateMetrics();
-    applyScale();
+    const handlePreferenceChange = () => {
+      if (shouldDisableStickyHero()) {
+        disableStickyHero();
+        return;
+      }
+      updateMetrics();
+      applyScale();
+    };
+
+    if (prefersReducedMotion.addEventListener) {
+      prefersReducedMotion.addEventListener("change", handlePreferenceChange);
+      mobileBreakpoint.addEventListener("change", handlePreferenceChange);
+    } else {
+      // Fallback for older browsers
+      prefersReducedMotion.addListener(handlePreferenceChange);
+      mobileBreakpoint.addListener(handlePreferenceChange);
+    }
+
+    if (!shouldDisableStickyHero()) {
+      updateMetrics();
+      applyScale();
+    } else {
+      disableStickyHero();
+    }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
-    window.addEventListener("orientationchange", handleResize);
-    window.addEventListener("load", () => {
-      updateMetrics();
-      applyScale();
-    });
+    window.addEventListener("orientationchange", handlePreferenceChange);
+    window.addEventListener("load", handlePreferenceChange);
   }
 })();
