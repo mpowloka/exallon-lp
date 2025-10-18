@@ -6,7 +6,7 @@
   --exallon-ink-soft: #44495a;
   --exallon-bg: #f8f8fb;
   --exallon-surface: #ffffff;
-  --exallon-hero: linear-gradient(100deg, rgba(82, 32, 156, 0.92), rgba(101, 48, 184, 0.78));
+  --exallon-hero: linear-gradient(135deg, rgba(82, 32, 156, 0.92), rgba(101, 48, 184, 0.78));
 }
 
 html,
@@ -109,9 +109,13 @@ main > section:first-of-type {
   display: inline-flex;
   align-items: center;
   height: 100%;
-  font-weight: 700;
-  color: var(--exallon-ink);
   text-decoration: none;
+}
+
+.primary-nav .brand-logo {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .primary-nav a,
@@ -335,8 +339,8 @@ section p {
 }
 
 .feature-callout-section {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 0rem;
+  margin-bottom: 10rem;
 }
 
 .feature-callout {
@@ -434,9 +438,16 @@ section p {
 }
 
 #approach .highlight {
-  background: linear-gradient(110deg, #52209c, #6530b8);
+  position: relative;
+  overflow: hidden;
+  background: var(--exallon-hero-secondary);
   border: 1px solid rgba(82, 32, 156, 0.95);
   color: rgba(255, 255, 255, 0.97);
+}
+
+#approach .highlight > *:not(.hero-bg) {
+  position: relative;
+  z-index: 1;
 }
 
 #approach .highlight ul {
