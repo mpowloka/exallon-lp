@@ -61,10 +61,14 @@
     const scrollContainer = stickyHero.closest(".scroll-container");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
+    const isFirefox =
+      typeof InstallTrigger !== "undefined" ||
+      (navigator.userAgent && navigator.userAgent.toLowerCase().includes("firefox"));
     const shouldDisableStickyHero = () =>
       prefersReducedMotion.matches || mobileBreakpoint.matches;
 
     const disableStickyHero = () => {
+      stickyHero.classList.add("hero--static");
       stickyHero.style.setProperty("--hero-scale", "1");
       stickyHero.style.setProperty("--hero-progress", "0");
       stickyHero.style.setProperty("--hero-offset", "0px");
@@ -72,6 +76,10 @@
       if (scrollContainer) {
         scrollContainer.style.removeProperty("--hero-scroll-length");
       }
+    };
+
+    const enableStickyHero = () => {
+      stickyHero.classList.remove("hero--static");
     };
 
     if (!scrollContainer) {
@@ -111,6 +119,7 @@
         disableStickyHero();
         return;
       }
+      enableStickyHero();
       if (!containerHeight) return;
       const scrollY = window.scrollY || window.pageYOffset;
       const range = Math.max(containerHeight * distanceFactor - viewportHeight, viewportHeight);
@@ -120,7 +129,7 @@
       const scale = 1 - (1 - minScale) * eased;
       const baseHeight = stickyHero.offsetHeight || viewportHeight;
       const anchorOffset = -0.5 * baseHeight * (1 - scale);
-      const radius = Math.min(48, 64 * eased);
+      const radius = isFirefox ? 0 : Math.min(48, 64 * eased);
 
       stickyHero.style.setProperty("--hero-scale", scale.toFixed(3));
       stickyHero.style.setProperty("--hero-progress", eased.toFixed(3));
@@ -142,6 +151,7 @@
         disableStickyHero();
         return;
       }
+      enableStickyHero();
       requestTick();
     };
 
@@ -150,6 +160,7 @@
         disableStickyHero();
         return;
       }
+      enableStickyHero();
       updateMetrics();
       requestTick();
     };
@@ -159,6 +170,7 @@
         disableStickyHero();
         return;
       }
+      enableStickyHero();
       updateMetrics();
       applyScale();
     };
@@ -173,6 +185,7 @@
     }
 
     if (!shouldDisableStickyHero()) {
+      enableStickyHero();
       updateMetrics();
       applyScale();
     } else {
