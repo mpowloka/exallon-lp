@@ -64,6 +64,7 @@
     if (!scrollContainer || prefersReducedMotion.matches) {
       stickyHero.style.setProperty("--hero-scale", "1");
       stickyHero.style.setProperty("--hero-progress", "0");
+      stickyHero.style.setProperty("--hero-offset", "0px");
       return;
     }
 
@@ -102,9 +103,14 @@
       const progress = clamp(rawProgress);
       const eased = clamp(Math.pow(progress, easePower));
       const scale = 1 - (1 - minScale) * eased;
+      const baseHeight = stickyHero.offsetHeight || viewportHeight;
+      const anchorOffset = -0.5 * baseHeight * (1 - scale);
+      const radius = Math.min(48, 64 * eased);
 
       stickyHero.style.setProperty("--hero-scale", scale.toFixed(3));
       stickyHero.style.setProperty("--hero-progress", eased.toFixed(3));
+      stickyHero.style.setProperty("--hero-offset", `${anchorOffset.toFixed(1)}px`);
+      stickyHero.style.setProperty("--hero-radius", `${radius.toFixed(1)}px`);
     };
 
     const requestTick = () => {

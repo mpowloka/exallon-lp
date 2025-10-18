@@ -165,9 +165,12 @@ main > section:first-of-type {
 .hero[data-scroll-sticky] {
   --hero-scale: 1;
   --hero-progress: 0;
+  --hero-offset: 0px;
+  --hero-radius: 0px;
   transform-origin: center;
-  transform: scale(var(--hero-scale));
+  transform: translateY(var(--hero-offset)) scale(var(--hero-scale));
   will-change: transform;
+  border-radius: var(--hero-radius);
   padding-top: calc(12rem - 6rem * var(--hero-progress));
   padding-bottom: calc(12rem - 6rem * var(--hero-progress));
   min-height: 100vh;
@@ -180,20 +183,23 @@ main > section:first-of-type {
 
 .hero[data-scroll-sticky] .content {
   transform-origin: center;
-  transform: scale(calc(1 - 0.22 * var(--hero-progress)));
-  transition: transform 0.35s ease-out;
+  transform: scale(calc(1 / var(--hero-scale, 1)));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
   max-width: 720px;
   margin: 0 auto;
 }
 
 .hero[data-scroll-sticky] .hero-bg {
-  opacity: calc(1 - 0.3 * var(--hero-progress));
-  transition: opacity 0.4s ease-out;
+  opacity: calc(1 - 0.25 * var(--hero-progress));
+  transition: opacity 0.35s ease-out;
 }
 
 .hero[data-scroll-sticky] .hero-bg svg {
-  transform: translate(-50%, -50%) scale(calc(1 + 0.12 * var(--hero-progress)));
-  transition: transform 0.4s ease-out;
+  transform: translate(-50%, -50%);
+  clip-path: inset(calc(12% * var(--hero-progress)) calc(10% * var(--hero-progress)));
+  -webkit-clip-path: inset(calc(12% * var(--hero-progress)) calc(10% * var(--hero-progress)));
+  transition: clip-path 0.35s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -211,6 +217,8 @@ main > section:first-of-type {
   .hero[data-scroll-sticky] .hero-bg svg {
     opacity: 1;
     transform: translate(-50%, -50%);
+    clip-path: none;
+    -webkit-clip-path: none;
   }
 }
 
