@@ -24,21 +24,31 @@
 </header>
 
 <main class="container">
-    <!-- HERO full-width section -->
-    <section class="hero">
-        <div class="hero-bg" data-graphic="hex-grid" aria-hidden="true"></div>
+    <!-- HERO full-width section with sticky scroll effect -->
+    <section class="hero-scroll" aria-label="Exallon hero introduction">
+        <div class="scroll-container">
+            <div class="sticky-container">
+                <section class="hero" data-scroll-sticky="true" data-shrink-min="0.65" data-shrink-distance="1.15" data-shrink-ease="1.05">
+                    <div class="hero-bg" data-graphic="hex-grid" aria-hidden="true"></div>
 
-        <div class="content">
-          <h1>Systems which are not allowed to fail.</h1>
-          <p class="lead">We deliver solutions when security and reliability are the absolute top priorities.</p>
-          <p>
-              <a href="#contact" class="contrast" role="button">Start a conversation</a>
-              <a href="#capabilities" role="button" class="secondary">See our capabilities</a>
-          </p>
+                    <div class="content">
+                      <h1>Systems which are not allowed to fail.</h1>
+                      <p class="lead">We deliver solutions when security and reliability are the absolute top priorities.</p>
+                      <p>
+                          <a href="#contact" class="contrast" role="button">Start a conversation</a>
+                          <a href="#capabilities" role="button" class="secondary">See our capabilities</a>
+                      </p>
+                    </div>
+                </section>
+            </div>
         </div>
     </section>
 
     <!-- Placeholder for other sections -->
+    <section id="reliability" class="content-section feature-callout-section">
+        <p class="feature-callout">Join the ace team of security veterans. When compromise in reliability or protection is off the table, Exallon architects the path forward—pairing enterprise-grade discipline with design-led clarity so your launch stands up to the toughest scrutiny. We’ve shipped platforms where every transaction matters, hardened infrastructure under active threat, and transformed complex workflows into trusted experiences. Let’s design your next mission-critical milestone together.</p>
+    </section>
+
     <section id="reliability" class="content-section">
         <h2>Reliability is an absolute priority.</h2>
         <p>We come from enterprise where <strong>systems are not allowed to fail or be hacked</strong>. We share expertise from banking industry, credit card manufacturing and software services for global players in banking and healthcare, as well as fintech start-ups.</p>
@@ -115,7 +125,7 @@
             <h2>Let’s architect what’s next</h2>
             <p>Tell us about your product goals, and we’ll propose a secure, practical, design-led path forward.</p>
         </div>
-        <a href="mailto:hello@exallon.com" class="secondary" role="button">hello@exallon.com</a>
+        <a href="contact.html" class="secondary" role="button">Open the contact form</a>
     </section>
 </main>
 

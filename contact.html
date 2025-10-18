@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Exallon</title>
+    <meta name="description" content="Reach out to Exallon for secure, practical, design-led software solutions." />
+    <meta name="color-scheme" content="light" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="section-waves">
+<header class="site-header container">
+    <nav class="primary-nav">
+        <a href="index.html" class="brand">Exallon</a>
+        <ul class="primary-nav__links">
+            <li><a href="index.html#capabilities">Capabilities</a></li>
+            <li><a href="index.html#approach">Approach</a></li>
+            <li><a href="index.html#team">Team</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="hero hero--compact">
+        <div class="hero-bg" data-graphic="wave-mesh" aria-hidden="true"></div>
+        <div class="content">
+            <h1>Let’s build something resilient</h1>
+            <p class="lead">Share a few details below and we’ll reply within one business day.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <p class="lead">Tell us about your product goals or challenges. We’ll follow up quickly with next steps.</p>
+
+        <form action="https://formsubmit.co/michal.powloka@exallon.com" method="POST" class="card contact-form">
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New message from exallon.com contact form" />
+            <input type="hidden" name="_template" value="table" />
+
+            <label for="name">Name
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+            </label>
+
+            <label for="email">Email
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </label>
+
+            <label for="company">Company (optional)
+                <input id="company" name="company" type="text" placeholder="Your company" />
+            </label>
+
+            <label for="message">How can we help?
+                <textarea id="message" name="message" rows="6" placeholder="Share a few details…" required></textarea>
+            </label>
+
+            <button type="submit" class="contrast">Send Message</button>
+        </form>
+    </section>
+</main>
+
+<footer class="container">
+    <small>© <span id="year"></span> Exallon. Built with security, practicality, and design in mind.</small>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

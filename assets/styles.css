@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap");
+
 :root {
   --exallon-accent: #7338a8;
   --exallon-ink: #111318;
@@ -140,6 +142,95 @@ main > section:first-of-type {
   overflow: hidden;
 }
 
+.hero-scroll {
+  position: relative;
+  width: 100%;
+  --hero-scroll-length: 220vh;
+}
+
+.hero-scroll .scroll-container {
+  position: relative;
+  height: var(--hero-scroll-length);
+}
+
+.hero-scroll .sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.hero[data-scroll-sticky] {
+  --hero-scale: 1;
+  --hero-progress: 0;
+  transform-origin: center;
+  transform: scale(var(--hero-scale));
+  will-change: transform;
+  padding-top: calc(12rem - 6rem * var(--hero-progress));
+  padding-bottom: calc(12rem - 6rem * var(--hero-progress));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero[data-scroll-sticky] .content {
+  transform-origin: center;
+  transform: scale(calc(1 - 0.22 * var(--hero-progress)));
+  transition: transform 0.35s ease-out;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero[data-scroll-sticky] .hero-bg {
+  opacity: calc(1 - 0.3 * var(--hero-progress));
+  transition: opacity 0.4s ease-out;
+}
+
+.hero[data-scroll-sticky] .hero-bg svg {
+  transform: translate(-50%, -50%) scale(calc(1 + 0.12 * var(--hero-progress)));
+  transition: transform 0.4s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero[data-scroll-sticky] {
+    transform: none;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .hero[data-scroll-sticky] .content {
+    transform: none;
+  }
+
+  .hero[data-scroll-sticky] .hero-bg,
+  .hero[data-scroll-sticky] .hero-bg svg {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.hero--compact {
+  padding: 3rem 1rem;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero--compact .content {
+  max-width: none;
+  margin: 0 auto;
+}
+
+.hero--compact .lead {
+  margin: 0 auto;
+}
+
 /* Background SVG layer injected by JS */
 .hero-bg {
   position: absolute;
@@ -235,6 +326,21 @@ section p {
   color: var(--exallon-ink-soft);
 }
 
+.feature-callout-section {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.feature-callout {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  text-align: center;
+  color: var(--exallon-ink);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 #capabilities .specializations {
   list-style: none;
   padding: 0;
@@ -269,6 +375,42 @@ section p {
   margin-bottom: 0.6rem;
   color: var(--exallon-accent);
   font-size: 1.2rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  max-width: none;
+  width: 100%;
+}
+
+.contact-form label {
+  color: var(--exallon-ink);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: rgba(115, 56, 168, 0.08);
+  border-color: rgba(115, 56, 168, 0.32);
+  color: var(--exallon-ink);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--exallon-accent);
+  box-shadow: 0 0 0 2px rgba(115, 56, 168, 0.25);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(17, 19, 24, 0.65);
+}
+
+.contact-form button {
+  justify-self: start;
+  background-color: var(--exallon-accent);
+  color: #fff;
+  border: none;
 }
 
 #approach.grid {
