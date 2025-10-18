@@ -184,7 +184,7 @@ main > section:first-of-type {
 .hero[data-scroll-sticky] .content {
   transform-origin: center;
   transform: scale(calc(1 / var(--hero-scale, 1)));
-  transition: transform 0.25s ease-out;
+  transition: none;
   will-change: transform;
   max-width: 720px;
   margin: 0 auto;
