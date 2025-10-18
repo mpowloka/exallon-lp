@@ -61,9 +61,6 @@
     const scrollContainer = stickyHero.closest(".scroll-container");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
-    const isFirefox =
-      typeof InstallTrigger !== "undefined" ||
-      (navigator.userAgent && navigator.userAgent.toLowerCase().includes("firefox"));
     const shouldDisableStickyHero = () =>
       prefersReducedMotion.matches || mobileBreakpoint.matches;
 
@@ -129,7 +126,7 @@
       const scale = 1 - (1 - minScale) * eased;
       const baseHeight = stickyHero.offsetHeight || viewportHeight;
       const anchorOffset = -0.5 * baseHeight * (1 - scale);
-      const radius = isFirefox ? 0 : Math.min(48, 64 * eased);
+      const radius = Math.min(48, 64 * eased);
 
       stickyHero.style.setProperty("--hero-scale", scale.toFixed(3));
       stickyHero.style.setProperty("--hero-progress", eased.toFixed(3));

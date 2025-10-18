@@ -206,6 +206,14 @@ main > section:first-of-type {
   transition: clip-path 0.35s ease-out;
 }
 
+@-moz-document url-prefix() {
+  .hero[data-scroll-sticky] .hero-bg,
+  .hero[data-scroll-sticky] .hero-bg svg {
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+  }
+}
+
 .hero.hero--static {
   transform: none;
   min-height: max(540px, 100vh);
